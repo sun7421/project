@@ -4,27 +4,34 @@
 #include<algorithm>
 #include<ctime>
 #include<vector>
-#include<string>
 using namespace std;
 class Player
     {
         int score;
+        int bet;
     public:
         string playername;
         vector<int> playercard;
+        int money;
+        int firstbet();
+        int doubledeal();
+        int insurance();
+        int perfectpair();
+        //int betbehind();
     };
-    
-    
+
 class dealer
     {
-        
+        public:
+            vector<int> dealercard;
+            int dmoney;
     };
 class allcard
-    {   
+    {
         string card[]={ "s","A","2","3","4","5","6","7","8","9","10","J","Q","K"};
-        
-           
-    public: 
+
+
+    public:
     vector<int>scorecard;
     allcard(vector<int>);
     int round=1;
@@ -35,20 +42,57 @@ class allcard
     void blackjack();
     };
 
-vector<int> allcard ::scorecards(vector <int>playercard)
+int Player::firstbet()
+{
+    cin>>money;
+    cin>>bet;
+    money-=bet;
+}
+int doubledeal()
+{
+
+}
+int Player::insurance()
+{
+    int insbet;
+    cin>>insbet;
+    if(dealercard[0]+dealercard[1]==21)
     {
+        money+=insbet;
+        cout << "Dealer got a blackjack"
+    }
+    else
+    {
+        money-=insbet;
+        cout << "Dealer didn't got a blackjack"
+    }
+    
+}
+int perfectpair()
+{
+
+}
+/*int betbehind()
+{
+
+}*/
+
+
+vector<int> allcard ::scorecards(vector <int>playercard)
+{
         for(int i=0; i<playercard.size(); i++)
          scorecard.push_back(playercard[i]);
          return scorecard;
-    }
-        
-        allcard::allcard(vector<int>x)
-        {
+}
 
-        }
-        void allcard :: drawcard(vector<int> &x)
-        {      
-        
+allcard::allcard(vector<int>x)
+{
+
+}
+
+void allcard :: drawcard(vector<int> &x)
+{
+
             if(round==1)
             {
             for(int i=0;i<2;i++)
@@ -61,11 +105,12 @@ vector<int> allcard ::scorecards(vector <int>playercard)
             {
             x.push_back(rand()%13+1);
             }
-        }
-        void allcard :: cardscore()
-        {
-        
-        
+}
+
+void allcard :: cardscore()
+{
+
+
             /*if(a[0]==card[1]&&a[1]==card[9]||a[0]==card[1] && a[1]==card[11])
             {
                 card[1]=11;
@@ -84,19 +129,20 @@ vector<int> allcard ::scorecards(vector <int>playercard)
                 card[j]=10;
             }
 
-        }
-        void allcard ::blackjack()
-            {
-                if(this->playercard[0]+this->playercard[1]==21)
-                    {
+}
+
+void allcard ::blackjack()
+{
+    if(this->playercard[0]+this->playercard[1]==21)
+    {
                         cout>>"Blackjack";
-                        
+
                     }
 
     return 0;
             }
 
-        
+
 int main()
 {
     cout<< scorecard[1];     /*Player p[4];
