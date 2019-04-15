@@ -16,7 +16,7 @@ class Player
         int firstbet();
         int doubledeal();
         int insurance();
-        int perfectpair();
+        //int perfectpair();
         //int betbehind();
     };
 
@@ -50,7 +50,7 @@ int Player::firstbet()
 }
 int doubledeal()
 {
-
+    bet*=2;
 }
 int Player::insurance()
 {
@@ -73,7 +73,14 @@ int perfectpair()
     if(playercard[0]==playercard[1])
     {
         cout << "Perfect pair victory!!";
-        money
+        money+=bet*4;
+    }
+}
+int split()
+{
+    if(playercard[0]==playercard[1])
+    {
+        playercard.pop_back();
     }
 }
 /*int betbehind()
@@ -144,11 +151,12 @@ void allcard ::blackjack()
                     }
 
     return 0;
-            }
+}
 
 
 int main()
 {
+    Player player[4];
     cout<< scorecard[1];     /*Player p[4];
    /*for(int i=0;i<2;i++)
    {
