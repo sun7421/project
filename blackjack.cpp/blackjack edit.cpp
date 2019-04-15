@@ -70,7 +70,11 @@ int Player::insurance()
 }
 int perfectpair()
 {
-
+    if(playercard[0]==playercard[1])
+    {
+        cout << "Perfect pair victory!!";
+        money
+    }
 }
 /*int betbehind()
 {
