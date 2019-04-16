@@ -14,9 +14,11 @@ class Player
         vector<int> playercard;
         int money;
         int firstbet();
-        int doubledeal();
+        int doubledown();
         int insurance();
-        //int perfectpair();
+        int perfectpair();
+        int split();
+        int surrender();
         //int betbehind();
     };
 
@@ -26,6 +28,7 @@ class dealer
             vector<int> dealercard;
             int dmoney;
     };
+
 class allcard
     {
         string card[]={ "s","A","2","3","4","5","6","7","8","9","10","J","Q","K"};
@@ -48,7 +51,7 @@ int Player::firstbet()
     cin>>bet;
     money-=bet;
 }
-int doubledeal()
+int Player::doubledown()
 {
     bet*=2;
 }
@@ -68,7 +71,7 @@ int Player::insurance()
     }
     
 }
-int perfectpair()
+int Player::perfectpair()
 {
     if(playercard[0]==playercard[1])
     {
@@ -76,14 +79,16 @@ int perfectpair()
         money+=bet*4;
     }
 }
-int split()
+int Player::surrender()
 {
-    if(playercard[0]==playercard[1])
-    {
-        playercard.pop_back();
-    }
+    money -= bet/2;
 }
-/*int betbehind()
+/*int split()
+{
+        playercard.pop_back();
+        bet*=2;
+}
+int betbehind()
 {
 
 }*/
@@ -98,7 +103,7 @@ vector<int> allcard ::scorecards(vector <int>playercard)
 
 allcard::allcard(vector<int>x)
 {
-
+    scorecard = x;
 }
 
 void allcard :: drawcard(vector<int> &x)
@@ -146,17 +151,63 @@ void allcard ::blackjack()
 {
     if(this->playercard[0]+this->playercard[1]==21)
     {
-                        cout>>"Blackjack";
+            cout>>"Blackjack";
 
-                    }
+    }
 
-    return 0;
+    //return 0;
 }
 
 
 int main()
 {
     Player player[4];
+    int bet;
+    char playeraction ='\0'
+
+    for(int i=0;i<4;i++)
+    {
+        cout << "Please enter your name : ";
+        cin >> player[i].playername;
+    }
+    cout << "Please chose your bet";
+    cin >> bet;
+
+    for(int i=0;i<4;i++)
+    {
+        drawcard(player[i])
+    }
+
+    while(true)
+    {
+        if(allcard.round==2)
+        {
+            cout << "[D] Draw [P] Bet for perfect pair [I] Bet for insurance ";
+            cout << "\n(for test only) [E] Exit game\n"
+            cout << "Enter your action";
+            cin >> playeraction;
+        }
+        else if(allcard.round==3)
+        {
+            cout << "[D] Draw [B] Double Down [S] Stand [X] Surrender"
+            cout << "\n(for test only) [E] Exit game\n"
+            cout << "Enter your action";
+            cin >> playeraction;
+        }
+        else if()
+        {
+            cout << "\ngame finished!!"
+            break;
+        }
+        else
+        {
+            cout << "[D] Draw [S] Stand [X] Surrender "
+            cout << "\n(for test only) [E] Exit game\n"
+            cout << "Enter your action";
+            cin >> playeraction;
+        }
+    }
+
     cout<< scorecard[1];     /*Player p[4];
    /*for(int i=0;i<2;i++)
    {
