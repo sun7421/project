@@ -159,13 +159,9 @@ void allcard ::blackjack()
 
 
 int main()
-<<<<<<< HEAD
 {   
     srand(time(0));
-=======
-{
     int player,chip,bet;
->>>>>>> 82a9de403a9ee2a4e1b7a20b75dfa4b7d8cd47d6
     cout<< "Player Name";
     cin>> player;
     cout<< "Input your chips";
