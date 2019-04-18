@@ -17,8 +17,9 @@ public:
     void allcard();
     void shuffler();
     void showcards();
-    int  getCard();
-    bool is_deck_empty();
+    int  getcard();
+    void drawcard(vector<int> &);
+    bool cardempty();
     
 };
 void card::allcard()
@@ -46,4 +47,20 @@ void card::showcards()
      {
 		cout << this->cards << " ,";
 	 }
+}
+bool card:: cardempty()
+{
+    return cards.empty();
+}
+void card:: drawcard(vector<int> &cards)
+{
+ 
+            cards.push_back(rand()%52);
+            
+}
+int card::getcard() {
+    
+	int c= cards.front();
+	cards.erase(cards.begin());
+	return c;
 }
