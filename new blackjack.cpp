@@ -17,8 +17,7 @@ public:
     void allcard();
     void shuffler();
     void showcards();
-    int  getcard();
-    void drawcard(vector<int> &);
+    int drawcard();
     bool cardempty();
     
 };
@@ -52,13 +51,8 @@ bool card:: cardempty()
 {
     return cards.empty();
 }
-void card:: drawcard(vector<int> &x)
-{
-            cards=x;
-            x.push_back(rand()%52);
-            
-}
-int card::getcard() 
+
+int card::drawcard() 
 {
     
 	int c= cards.front();
@@ -68,4 +62,5 @@ int card::getcard()
 }
 int main(){
     srand(time(0));
+    
 }
