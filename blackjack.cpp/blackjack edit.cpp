@@ -155,14 +155,12 @@ void allcard ::blackjack()
 
 int main()
 {
+    int player,chip,bet;
     cout<< "Player Name";
-    int player;
     cin>> player;
     cout<< "Input your chips";
-    int chips;
     cin>> chips;
     cout<< "input bet";
-    int bet;
     cin>> bet;
     Player player[4];
     int bet=0;
