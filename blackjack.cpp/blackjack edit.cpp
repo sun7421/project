@@ -20,7 +20,7 @@ class Player
         int split();
         int surrender();
         //int betbehind();
-        ;
+        
     };
 
 class dealer
@@ -45,13 +45,6 @@ class allcard
     vector<int> scorecards(vector<int>);
     void blackjack();
     };
-
-void Player::firstbet()
-{
-    cin>>money;
-    cin>>bet;
-    money-=bet;
-}
 int Player::doubledown()
 {
     bet*=2;
@@ -173,9 +166,10 @@ int main()
     cin>> bet;
     Player player[4];
     int bet=0;
-    char playeraction ='\0'
+    
+    char playeraction ='\0';
 
-    firstbet();
+    
     
     for(int i=0;i<4;i++)
     {
