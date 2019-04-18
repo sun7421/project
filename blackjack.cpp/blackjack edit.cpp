@@ -20,6 +20,7 @@ class Player
         int split();
         int surrender();
         //int betbehind();
+        ;
     };
 
 class dealer
