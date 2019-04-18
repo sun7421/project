@@ -163,6 +163,7 @@ int main()
 {   
     srand(time(0));
     int player,chips,bet;
+    allcard yeskay;
     cout<< "Player Name";
     cin>> player;
     cout<< "Input your chips";
@@ -171,7 +172,7 @@ int main()
     cin>> bet;
     Player player[4];
     int bet=0;
-     allcard.firstpick();
+    yeskay.firstpick();
     char playeraction ='\0';
 
     
