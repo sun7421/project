@@ -52,16 +52,20 @@ bool card:: cardempty()
 {
     return cards.empty();
 }
-void card:: drawcard(vector<int> &cards)
+void card:: drawcard(vector<int> &x)
 {
- 
-            cards.push_back(rand()%52);
+            cards=x;
+            x.push_back(rand()%52);
             
 }
-int card::getcard() {
+int card::getcard() 
+{
     
 	int c= cards.front();
 	cards.erase(cards.begin());
 	return c;
-    s
+    
+}
+int main(){
+    srand(time(0));
 }
