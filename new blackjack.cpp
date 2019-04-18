@@ -24,7 +24,7 @@ void card::allcard()
     {
         card+=card;
     }
-           
+       
            
 }
 void shuffler() {
