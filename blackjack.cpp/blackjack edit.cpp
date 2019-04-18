@@ -48,7 +48,7 @@ class allcard
     };
 void allcard::firstpick()
 {
-    rand()%13+1;
+    card[rand()%13+1];
 }
 int Player::doubledown()
 {
@@ -161,16 +161,18 @@ void allcard ::blackjack()
 int main()
 {   
     srand(time(0));
-    int player,chip,bet;
     cout<< "Player Name";
+    int player;
     cin>> player;
     cout<< "Input your chips";
+    int chips;
     cin>> chips;
     cout<< "input bet";
+    int bet;
     cin>> bet;
     Player player[4];
     int bet=0;
-     allcard::firstpick();
+     allcard.firstpick();
     char playeraction ='\0';
 
     
