@@ -48,7 +48,8 @@ class allcard
     };
 void allcard::firstpick()
 {
-    card[rand()%13+1];
+     allcard.drawcard(vector<int>&x);
+
 }
 int Player::doubledown()
 {
@@ -172,7 +173,7 @@ int main()
     cin>> bet;
     Player player[4];
     int bet=0;
-     allcard::firstpick();
+     allcard.firstpick();
     char playeraction ='\0';
 
     
