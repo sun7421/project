@@ -11,6 +11,7 @@ int J = 10;
 int Q = 10;
 int K = 10;
 public:
+    int round=1;
     vector<int> cards;
    
     void allcard();
@@ -22,29 +23,27 @@ public:
 };
 void card::allcard()
 {       
-    cards = {A,2,3,4,5,6,7,8,9,10,J,Q,K,};
-    for(int i=0;i<3;i++)
-    {
-        cards+=cards;
-    }
+    cards = {A,2,3,4,5,6,7,8,9,10,J,Q,K,
+             A,2,3,4,5,6,7,8,9,10,J,Q,K,
+             A,2,3,4,5,6,7,8,9,10,J,Q,K, 
+             A,2,3,4,5,6,7,8,9,10,J,Q,K};
+    
            
            
 }
-void shuffler() {
+void card::shuffler() {
 	srand((unsigned)time(0));
 	for (int i = 0; i < 52; i++) 
     { 
         swap(cards[i], cards[rand() % 52]);
-	    cout << "******Deck Shuffled!******" << endl;
+	    cout << " Deck Shuffled!******" << endl;
     }
 }
-void showcard() 
+void card::showcards() 
 {
 	cout << "card:" << endl;
-	int a=0;
-	for (auto i : card) {
-		cout << i << " ,";
-		a++;
-		if (t % 13 == 0) cout << endl;
-	}
+	for (int i=0;i<round;i++)
+     {
+		cout << this->cards << " ,";
+	 }
 }
