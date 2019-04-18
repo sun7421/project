@@ -13,7 +13,6 @@ class Player
         string playername;
         vector<int> playercard;
         int money;
-        void firstbet();
         int doubledown();
         int insurance();
         int perfectpair();
@@ -45,12 +44,6 @@ class allcard
     void blackjack();
     };
 
-void Player::firstbet()
-{
-    cin>>money;
-    cin>>bet;
-    money-=bet;
-}
 int Player::doubledown()
 {
     bet*=2;
@@ -161,20 +154,15 @@ void allcard ::blackjack()
 
 int main()
 {
+    int player,chips,bet;
     cout<< "Player Name";
-    int player;
     cin>> player;
     cout<< "Input your chips";
-    int chips;
     cin>> chips;
     cout<< "input bet";
-    int bet;
-    cin>> bet;
     Player player[4];
-    int bet=0;
     char playeraction ='\0'
 
-    firstbet();
     
     for(int i=0;i<4;i++)
     {
