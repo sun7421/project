@@ -12,9 +12,12 @@ int Q = 10;
 int K = 10;
 public:
     vector<int> cards;
-    string card;
+   
     void allcard();
     void shuffler();
+    void showcards();
+    int  getCard();
+    bool is_deck_empty();
     
 };
 void card::allcard()
@@ -24,7 +27,7 @@ void card::allcard()
     {
         cards+=cards;
     }
-       
+           
            
 }
 void shuffler() {
@@ -34,4 +37,14 @@ void shuffler() {
         swap(cards[i], cards[rand() % 52]);
 	    cout << "******Deck Shuffled!******" << endl;
     }
+}
+void showcard() 
+{
+	cout << "card:" << endl;
+	int a=0;
+	for (auto i : card) {
+		cout << i << " ,";
+		a++;
+		if (t % 13 == 0) cout << endl;
+	}
 }
