@@ -63,4 +63,5 @@ int card::getcard() {
 	int c= cards.front();
 	cards.erase(cards.begin());
 	return c;
+    s
 }
