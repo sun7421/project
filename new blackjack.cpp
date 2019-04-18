@@ -47,7 +47,7 @@ void card::showcards()
 		cout << this->cards << " ,";
 	 }
 }
-bool card:: cardempty()
+bool card::cardempty()
 {
     return cards.empty();
 }
