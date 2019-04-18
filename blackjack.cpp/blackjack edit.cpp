@@ -36,6 +36,7 @@ class allcard
 
 
     public:
+    void firstpick();
     vector<int>scorecard;
     allcard(vector<int>);
     int round=1;
@@ -45,6 +46,10 @@ class allcard
     vector<int> scorecards(vector<int>);
     void blackjack();
     };
+void allcard::firstpick()
+{
+    rand()%13+1;
+}
 int Player::doubledown()
 {
     bet*=2;
@@ -154,7 +159,8 @@ void allcard ::blackjack()
 
 
 int main()
-{
+{   
+    srand(time(0));
     cout<< "Player Name";
     int player;
     cin>> player;
@@ -166,7 +172,7 @@ int main()
     cin>> bet;
     Player player[4];
     int bet=0;
-    
+     allcard::firstpick();
     char playeraction ='\0';
 
     
