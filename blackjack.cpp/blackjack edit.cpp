@@ -48,7 +48,8 @@ class allcard
     };
 void allcard::firstpick()
 {
-    card[rand()%13+1];
+     allcard.drawcard(vector<int>&x);
+
 }
 int Player::doubledown()
 {
