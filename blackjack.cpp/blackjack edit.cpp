@@ -180,7 +180,7 @@ int main()
     }
     ///drawcard(dealercard);
 
-    while(true)
+    /*while(true)
     {
         if(allcard.round==2)
         {
@@ -219,4 +219,5 @@ int main()
         ]
    }
         */
+       Fuckkkkkkkkkkkkkkkkkkkk
 }
