@@ -32,7 +32,7 @@ void card::allcard()
            
 }
 void card::shuffler() {
-	srand((unsigned)time(0));
+	srand(time(0));
 	for (int i = 0; i < 52; i++) 
     { 
         swap(cards[i], cards[rand() % 52]);
