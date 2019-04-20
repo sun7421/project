@@ -1,9 +1,4 @@
-#include<iostream>
-#include<cstdlib>
-#include<algorithm>
-#include<ctime>
-#include<vector>
-using namespace std;
+#include"card.cpp"
 
 class Player {
 private:
