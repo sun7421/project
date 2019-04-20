@@ -17,7 +17,7 @@ public:
     void allcard();
     void shuffler();
     void showcards();
-    int drawcard();
+    friend int drawcard();
     bool cardempty();
     
 };
@@ -52,10 +52,10 @@ bool card:: cardempty()
     return cards.empty();
 }
 
-int card::drawcard() 
+int drawcard() 
 {
-    
-	int c= cards.front();
+	int c;
+    c= cards.front();
 	cards.erase(cards.begin());
 	return c;
     

@@ -1,8 +1,4 @@
-#include<iostream>
-#include<cstdlib>
-#include<algorithm>
-#include<ctime>
-#include<vector>
+#include"card.cpp"
 using namespace std;
 
 class Player {

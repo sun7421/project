@@ -7,7 +7,7 @@ class dealer{
 public:
 	void setPlayerSet(vector<Player*>& playerSet);
 	vector<Player*> getPlayerSet();
-	void Distribute();
+	void Draw2();
 	void draw();
 	int CheckHand();
 
@@ -23,10 +23,10 @@ vector<Player*> dealer::getPlayerSet() {
 void dealer::Hit() {
 	this->hand.push_back(drawcard());
 }
-void dealer::Distribute() {
+void dealer::Draw2() {
 	
-	this->Hit();
-	this->Hit();
+	this->draw();
+	this->draw();
 
 	for (auto p : this->playerSet) {
 		p->draw();
