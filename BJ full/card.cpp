@@ -56,7 +56,7 @@ int card::drawcard()
 {
     
 	int c= cards.front();
-	cards.erase(cards.begin());
+	card.erase(cards.begin());
 	return c;
     
 }
