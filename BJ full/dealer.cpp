@@ -70,6 +70,58 @@ int drawcard(vector<int> & cards)
     
 }
 
+class Player {
+private:
+	vector<int>hand;
+	int pmoney;
+	int bet=0;
+	int sidebet=0;
+public:
+	void Draw();
+	void Stand();
+	void Double();
+	//void Split();
+	int Checkscore();
+	char playeraction();
+};
+
+
+void Player::Draw(){
+	this->hand.push_back(drawcard());
+}
+
+void Player::Stand(){
+	//Do nothing
+}
+
+void Player::Double(){
+    this->bet *= 2;
+}
+
+/*void Player::Split(){
+    this->pmoney -= this->bet;
+}*/
+
+void Player::
+
+int Player::Checkscore() {
+	int sum = 0;
+	for (auto i : this->hand) {
+		if (i == 1 && sum + 11 <= 21) i = 11;
+		cout << "Card:" << i << endl;
+		sum += i;
+	}
+	return sum;
+}
+
+char Player::playeraction() {
+	cout << "Non Blackjack, Hit or Stand?" << endl;
+	cout << "Press H to draw a card, press S to stand." << endl;
+	char c = ' ';
+	cin >> c;
+	return c;
+}
+
 class dealer{
 	vector<int>hand;
 	vector<Player*>playerSet;
@@ -79,7 +131,7 @@ public:
 	void setPlayerSet(vector<Player*>& playerSet);
 	vector<Player*> getPlayerSet();
 	void Draw2();
-	int CheckHand();
+	int Checkdscore();
 	void draw();
 
 };
@@ -107,7 +159,7 @@ void dealer::Draw2() {
 		p->draw();
 	}
 }
-int dealer::CheckHand() {
+int dealer::Checkdscore() {
 	int sum = 0;
 	cout << "Dealer Hand:" << endl;
 	for (auto i : this->hand) {

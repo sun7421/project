@@ -1,4 +1,9 @@
-#include"card.cpp"
+#include<iostream>
+#include<cstdlib>
+#include<algorithm>
+#include<ctime>
+#include<vector>
+using namespace std;
 using namespace std;
 
 class Player {
