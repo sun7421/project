@@ -54,9 +54,9 @@ bool card:: cardempty()
 
 int drawcard() 
 {
-	int c;
-    c= cards.front();
-	cards.erase(cards.begin());
+    
+	int c= cards.front();
+	card.erase(cards.begin());
 	return c;
     
 }
