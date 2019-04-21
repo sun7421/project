@@ -4,24 +4,23 @@
 #include<ctime>
 #include<vector>
 using namespace std;
-class card
-{
+
 int A = 1;
 int J = 10;
 int Q = 10;
 int K = 10;
-public:
-    int round=1;
+    
     vector<int> cards;
+	
    
     void allcard();
     void shuffler();
     void showcards();
-   // friend int drawcard();
+    int drawcard();
     bool cardempty();
     
-};
-void card::allcard()
+
+void allcard()
 {       
     cards = {A,2,3,4,5,6,7,8,9,10,J,Q,K,
              A,2,3,4,5,6,7,8,9,10,J,Q,K,
@@ -31,7 +30,7 @@ void card::allcard()
            
            
 }
-void card::shuffler() {
+void shuffler() {
 	srand(time(0));
 	for (int i = 0; i < 52; i++) 
     { 
@@ -39,15 +38,17 @@ void card::shuffler() {
 	    cout << " Deck Shuffled!******" << endl;
     }
 }
-void card::showcards() 
+void showcards() 
 {
 	cout << "card:" << endl;
-	for (int i=0;i<round;i++)
-     {
-		cout << this->cards << " ,";
-	 }
+	
+	for (int i=0;i<=cards.size;i++) {
+		int x=cards.size;
+		cout << x << " ,";
+		if (x% 13 == 0) cout << endl;
+	}
 }
-bool card:: cardempty()
+bool cardempty()
 {
     return cards.empty();
 }
@@ -104,7 +105,7 @@ void Player::Double(){
 
 int Player::Checkscore() {
 	int sum = 0;
-	for (auto i : this->hand) {
+	for (int i=0;i<=hand.size ;i++) {
 		if (i == 1 && sum + 11 <= 21) i = 11;
 		cout << "Card:" << i << endl;
 		sum += i;
@@ -124,11 +125,11 @@ class dealer{
 	public:
 	vector<int>hand;
 	vector<Player*>playerSet;
-	card draws;
+	//card draws;
 	void setPlayerSet(vector<Player*>& playerSet);
 	vector<Player*> getPlayerSet();
 	void Draw2();
-	int Checkdscore();
+	int checkscore();
 	void draw();
 
 };
@@ -142,21 +143,21 @@ vector<Player*> dealer::getPlayerSet() {
 }
 
 void dealer::draw() {
-	this->hand.push_back(drawcard(draws.cards));
+	this->hand.push_back(drawcard());
 }
 void dealer::Draw2() {
 	//int collect;
 	for(int i=0; i<2; i++){
 	//	collect = drawcard(draws.cards);
-		hand.push_back(drawcard(draws.cards));
+		hand.push_back(drawcard());
 	}
 
 	for (auto p : this->playerSet) {
-		p->draw();
-		p->draw();
+		this->draw();
+		this->draw();
 	}
 }
-int dealer::Checkdscore() {
+int dealer::checkscore() {
 	int sum = 0;
 	cout << "Dealer Hand:" << endl;
 	for (auto i : this->hand) {
@@ -168,18 +169,18 @@ int dealer::Checkdscore() {
 }
 class game 
 	{
-		
+		public:
 		void addDealer();
 		void addPlayer();
 		void start();
 		void checkWin();
 		void turn();
-		/*vector<Dealer*>dealerSet;
-		vector<Player*>playerSet;*/
-	}
+		vector<dealer*>dealerSet;
+		vector<Player*>playerSet;
+	};
 	void game::addDealer() 
 	{
-		dealer* d = new Dealer();
+		dealer* d = new dealer();
 		dealerSet.push_back(d);
 	}
 void game::addPlayer()
@@ -191,24 +192,24 @@ void game::start() {
 	cout << "******Game Start!******"<<endl;
 	allcard();
 	showcards();
-	shuffle();
+	shuffler();
 	showcards();
-	Dealer* d = dealerSet.front();
+	dealer* d = dealerSet.front();
 	d->setPlayerSet(playerSet);
 	d->Draw2();
 }
 
 void game::checkWin() {
 	cout << "******Check Win******" << endl;
-	Dealer* d = dealerSet.front();
-	int dealerHand=d->CheckHand();
+	dealer* d = dealerSet.front();
+	int dealerHand=d->checkscore();
 	int player = 0;
 
 	string res = "";
 	for (auto p : d->getPlayerSet()) {
 		player++;
 		cout << "Player" << player << "'s Hand" << endl;
-		int playerHand = p->CheckHand();
+		int playerHand = p->Checkscore();
 		if (playerHand == 21 && dealerHand == 21) {
 			res += "Player";
 			res += (char)(player + '0');
@@ -249,27 +250,41 @@ void game::checkWin() {
 		cout << res << endl;
 }
 void game::turn() {
-	Dealer* d = dealerSet.front();
+	dealer* d = dealerSet.front();
 	int player = 0;
 	for (auto p : d->getPlayerSet()) {
 		player++;
 		cout << endl;
 		cout << "******Player" << player << "'s move*******" << endl;
 		cout << "Player" << player << "'s Hand" << endl;
-		int playerHand = p->CheckHand();
+		int playerHand = p->Checkscore();
 		char c = ' ';
 		while (c != 'S' && playerHand < 21) {
-			c = p->choice();
+			c = p->playeraction();
 			if (c == 'H') 
-				p->draw();
+				p->Draw();
 			else if (c == 'S') 
 				/*Stand, do nothing*/;
 			else 
 				cout << "Invalid input, try again." << endl;
-			playerHand = p->CheckHand();
+			playerHand = p->Checkscore();
 		}
 	}
 	cout << "******Turns end!******" << endl;
-	while (d->CheckHand() < 17) 
+	while (d->checkscore() < 17) 
 		d->draw();
+}
+int main() {
+
+	addDealer();
+	addPlayer();
+	addPlayer();
+	addPlayer();
+	addPlayer();
+	//Start game
+	start();
+	turn();
+	checkWin();
+	
+	system("pause");
 }
