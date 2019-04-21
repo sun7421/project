@@ -8,11 +8,11 @@ using namespace std;
 
 class card
 {
-int A = 1;
-int J = 10;
-int Q = 10;
-int K = 10;
 public:
+    int A = 1;
+    int J = 10;
+    int Q = 10;
+    int K = 10;
     int round=1;
     vector<int> cards;
    
@@ -29,9 +29,7 @@ void card::allcard()
              A,2,3,4,5,6,7,8,9,10,J,Q,K,
              A,2,3,4,5,6,7,8,9,10,J,Q,K, 
              A,2,3,4,5,6,7,8,9,10,J,Q,K};
-    
-           
-           
+       
 }
 void card::shuffler() {
 	srand(time(0));
