@@ -270,6 +270,7 @@ void game::turn() {
 			playerHand = p->Checkscore();
 		}
 	}
+	
 	cout << "******Turns end!******" << endl;
 	while (d->checkscore() < 17) 
 		d->draw();
