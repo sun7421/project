@@ -102,8 +102,6 @@ void Player::Double(){
     this->pmoney -= this->bet;
 }*/
 
-void Player::
-
 int Player::Checkscore() {
 	int sum = 0;
 	for (auto i : this->hand) {
@@ -123,11 +121,10 @@ char Player::playeraction() {
 }
 
 class dealer{
+	public:
 	vector<int>hand;
 	vector<Player*>playerSet;
 	card draws;
-
-public:
 	void setPlayerSet(vector<Player*>& playerSet);
 	vector<Player*> getPlayerSet();
 	void Draw2();
@@ -168,4 +165,111 @@ int dealer::Checkdscore() {
 		sum += i;
 	}
 	return sum;
+}
+class game 
+	{
+		
+		void addDealer();
+		void addPlayer();
+		void start();
+		void checkWin();
+		void turn();
+		/*vector<Dealer*>dealerSet;
+		vector<Player*>playerSet;*/
+	}
+	void game::addDealer() 
+	{
+		dealer* d = new Dealer();
+		dealerSet.push_back(d);
+	}
+void game::addPlayer()
+	{		
+		Player* d = new Player();
+		playerSet.push_back(d);
+	}
+void game::start() {
+	cout << "******Game Start!******"<<endl;
+	allcard();
+	showcards();
+	shuffle();
+	showcards();
+	Dealer* d = dealerSet.front();
+	d->setPlayerSet(playerSet);
+	d->Draw2();
+}
+
+void game::checkWin() {
+	cout << "******Check Win******" << endl;
+	Dealer* d = dealerSet.front();
+	int dealerHand=d->CheckHand();
+	int player = 0;
+
+	string res = "";
+	for (auto p : d->getPlayerSet()) {
+		player++;
+		cout << "Player" << player << "'s Hand" << endl;
+		int playerHand = p->CheckHand();
+		if (playerHand == 21 && dealerHand == 21) {
+			res += "Player";
+			res += (char)(player + '0');
+			res+=" Blackjack Push!\n";
+		}else
+		if (playerHand == 21 && dealerHand != 21) {
+			res += "Player";
+			res += (char)(player + '0');
+			res += " Wins, Blackjack!\n";
+		}else
+		if(playerHand != 21 && dealerHand == 21) {
+			res+= "Dealer Wins, Blackjack!\n";
+		}else
+		if (playerHand <21 && playerHand > dealerHand) {
+			res+= "Player";
+			res+= (char)(player + '0');
+			res += " Wins!\n";
+		}else
+		if (playerHand > 21) {
+			res+= "Player";
+			res+= (char)(player + '0');
+			res += " Bust, lose!\n";
+		}else
+		if (dealerHand > 21) {
+			res+= "Dealer Bust, Player Wins!\n";
+		}else
+		if (playerHand == dealerHand) {
+			res += "Player";
+			res += (char)(player + '0');
+			res+= " Push!\n";
+		}else
+		if (playerHand < dealerHand) {
+			res += "Player";
+			res += (char)(player + '0');
+			res += " lose!\n";
+		}
+	}
+		cout << res << endl;
+}
+void game::turn() {
+	Dealer* d = dealerSet.front();
+	int player = 0;
+	for (auto p : d->getPlayerSet()) {
+		player++;
+		cout << endl;
+		cout << "******Player" << player << "'s move*******" << endl;
+		cout << "Player" << player << "'s Hand" << endl;
+		int playerHand = p->CheckHand();
+		char c = ' ';
+		while (c != 'S' && playerHand < 21) {
+			c = p->choice();
+			if (c == 'H') 
+				p->draw();
+			else if (c == 'S') 
+				/*Stand, do nothing*/;
+			else 
+				cout << "Invalid input, try again." << endl;
+			playerHand = p->CheckHand();
+		}
+	}
+	cout << "******Turns end!******" << endl;
+	while (d->CheckHand() < 17) 
+		d->draw();
 }
