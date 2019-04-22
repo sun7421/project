@@ -42,10 +42,11 @@ void showcards()
 {
 	cout << "card:" << endl;
 	
-	for (int i=0;i<=cards.size;i++) {
-		int x=cards.size;
-		cout << x << " ,";
-		if (x% 13 == 0) cout << endl;
+	//for (int i=0;i<=cards.size;i++) {
+	for (auto i: cards) {
+		//int x=cards.size;
+		cout << i << " ,";
+		if (i% 13 == 0) cout << endl;
 	}
 }
 bool cardempty()
@@ -167,9 +168,9 @@ int dealer::checkscore() {
 	}
 	return sum;
 }
-class game 
-	{
-		public:
+//class game 
+	//{
+	//	public:
 		void addDealer();
 		void addPlayer();
 		void start();
@@ -177,18 +178,18 @@ class game
 		void turn();
 		vector<dealer*>dealerSet;
 		vector<Player*>playerSet;
-	};
-	void game::addDealer() 
+	//};
+	void addDealer() 
 	{
 		dealer* d = new dealer();
 		dealerSet.push_back(d);
 	}
-void game::addPlayer()
+void addPlayer()
 	{		
 		Player* d = new Player();
 		playerSet.push_back(d);
 	}
-void game::start() {
+void start() {
 	cout << "******Game Start!******"<<endl;
 	allcard();
 	showcards();
@@ -199,7 +200,7 @@ void game::start() {
 	d->Draw2();
 }
 
-void game::checkWin() {
+void checkWin() {
 	cout << "******Check Win******" << endl;
 	dealer* d = dealerSet.front();
 	int dealerHand=d->checkscore();
@@ -249,7 +250,7 @@ void game::checkWin() {
 	}
 		cout << res << endl;
 }
-void game::turn() {
+void turn() {
 	dealer* d = dealerSet.front();
 	int player = 0;
 	for (auto p : d->getPlayerSet()) {
@@ -270,7 +271,7 @@ void game::turn() {
 			playerHand = p->Checkscore();
 		}
 	}
-	
+
 	cout << "******Turns end!******" << endl;
 	while (d->checkscore() < 17) 
 		d->draw();
