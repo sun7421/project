@@ -31,7 +31,7 @@ void allcard()
 
 }
 void shuffler() {
-	srand(time(0));
+	//srand(time(0));
 	for (int i = 0; i < 52; i++)
     {
         swap(cards[i], cards[rand() % 52]);
@@ -290,7 +290,7 @@ void turn() {
 		d->draw();
 }
 int main() {
-
+    srand(time(0));
 	addDealer();
 	addPlayer();
 	addPlayer();
