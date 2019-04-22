@@ -10,14 +10,14 @@ int J = 10;
 int Q = 10;
 int K = 10;
 
-    vector<int> cards;
+vector<int> cards;
 
 
-    void allcard();
-    void shuffler();
-    void showcards();
-    int drawcard();
-    bool cardempty();
+void allcard();
+void shuffler();
+void showcards();
+int drawcard();
+bool cardempty();
 
 
 void allcard()
@@ -301,4 +301,5 @@ int main() {
 	checkWin();
 
 	system("pause");
+	return 0;
 }
