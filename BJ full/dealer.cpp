@@ -9,67 +9,79 @@ int A = 1;
 int J = 10;
 int Q = 10;
 int K = 10;
-    
+
     vector<int> cards;
-	
-   
+
+
     void allcard();
     void shuffler();
     void showcards();
     int drawcard();
     bool cardempty();
-    
+
 
 void allcard()
-{       
+{
     cards = {A,2,3,4,5,6,7,8,9,10,J,Q,K,
              A,2,3,4,5,6,7,8,9,10,J,Q,K,
-             A,2,3,4,5,6,7,8,9,10,J,Q,K, 
+             A,2,3,4,5,6,7,8,9,10,J,Q,K,
              A,2,3,4,5,6,7,8,9,10,J,Q,K};
-    
-           
-           
+
+
+
 }
 void shuffler() {
 	srand(time(0));
-	for (int i = 0; i < 52; i++) 
-    { 
+	for (int i = 0; i < 52; i++)
+    {
         swap(cards[i], cards[rand() % 52]);
 	    cout << " Deck Shuffled!******" << endl;
     }
 }
-void showcards() 
+
+void showcards()
 {
 	cout << "card:" << endl;
-	
-	//for (int i=0;i<=cards.size;i++) {
-	for (auto i: cards) {
-		//int x=cards.size;
-		cout << i << " ,";
-		if (i% 13 == 0) cout << endl;
+
+	for (int i=0;i<=cards.size();i++) {
+		int x=cards.size();
+		cout << x << " ,";
+		if (x% 13 == 0) cout << endl;
 	}
 }
+
+
+/*void showcards()
+{
+	cout << "card:" << endl;
+	int t=0;
+	for (auto i : cards) {
+		cout << i << " ,";
+		t++;
+		if (t % 13 == 0) cout << endl;
+	}
+}*/
 bool cardempty()
 {
     return cards.empty();
 }
 
-/*int drawcard() 
+/*int drawcard()
 {
-    
+
 	int c= cards.front();
 	card.erase(cards.begin());
 	return c;
-    
+
 }*/
 
-int drawcard(vector<int> & cards) 
+int drawcard(vector<int> & cards)
 {
-    
+
 	int c= cards.front();
 	cards.erase(cards.begin());
 	return c;
-    
+
 }
 
 class Player {
@@ -106,7 +118,7 @@ void Player::Double(){
 
 int Player::Checkscore() {
 	int sum = 0;
-	for (int i=0;i<=hand.size ;i++) {
+	for (int i=0;i<=hand.size() ;i++) {
 		if (i == 1 && sum + 11 <= 21) i = 11;
 		cout << "Card:" << i << endl;
 		sum += i;
@@ -168,7 +180,7 @@ int dealer::checkscore() {
 	}
 	return sum;
 }
-//class game 
+//class game
 	//{
 	//	public:
 		void addDealer();
@@ -179,13 +191,13 @@ int dealer::checkscore() {
 		vector<dealer*>dealerSet;
 		vector<Player*>playerSet;
 	//};
-	void addDealer() 
+	void addDealer()
 	{
 		dealer* d = new dealer();
 		dealerSet.push_back(d);
 	}
 void addPlayer()
-	{		
+	{
 		Player* d = new Player();
 		playerSet.push_back(d);
 	}
@@ -262,18 +274,18 @@ void turn() {
 		char c = ' ';
 		while (c != 'S' && playerHand < 21) {
 			c = p->playeraction();
-			if (c == 'H') 
+			if (c == 'H')
 				p->Draw();
-			else if (c == 'S') 
+			else if (c == 'S')
 				/*Stand, do nothing*/;
-			else 
+			else
 				cout << "Invalid input, try again." << endl;
 			playerHand = p->Checkscore();
 		}
 	}
 
 	cout << "******Turns end!******" << endl;
-	while (d->checkscore() < 17) 
+	while (d->checkscore() < 17)
 		d->draw();
 }
 int main() {
@@ -287,6 +299,6 @@ int main() {
 	start();
 	turn();
 	checkWin();
-	
+
 	system("pause");
 }
