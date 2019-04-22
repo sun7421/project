@@ -75,7 +75,8 @@ bool cardempty()
 
 }*/
 
-int drawcard(vector<int> & cards)
+//int drawcard(vector<int> & cards)
+int drawcard()
 {
 
 	int c= cards.front();
