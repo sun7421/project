@@ -186,29 +186,27 @@ int dealer::checkscore() {
 	}
 	return sum;
 }
-//class game
-	//{
-	//	public:
-		void addDealer();
-		void addPlayer();
-		void start();
-		void checkWin();
-		void turn();
-		vector<dealer*>dealerSet;
-		vector<Player*>playerSet;
-	//};
-	void addDealer()
+
+	void createDealer();
+	void createPlayer();
+	void start();
+	void checkWin();
+	void turn();
+	vector<dealer*>dealerSet;
+	vector<Player*>playerSet;
+	
+	void createDealer()
 	{
 		dealer* d = new dealer();
 		dealerSet.push_back(d);
 	}
-void addPlayer()
+void createPlayer()
 	{
 		Player* d = new Player();
 		playerSet.push_back(d);
 	}
 void start() {
-	cout << "******Game Start!******"<<endl;
+	cout << "******Blackjack Game Start!******"<<endl;
 	allcard();
 	showcards();
 	shuffler();
@@ -219,54 +217,56 @@ void start() {
 }
 
 void checkWin() {
-	cout << "******Check Win******" << endl;
+	cout << "******Match Result******" << endl;
 	dealer* d = dealerSet.front();
 	int dealerHand=d->checkscore();
 	int player = 0;
 
-	string res = "";
+	string bjresult = "";
 	for (auto p : d->getPlayerSet()) {
 		player++;
 		cout << "Player" << player << "'s Hand" << endl;
 		int playerHand = p->Checkscore();
 		if (playerHand == 21 && dealerHand == 21) {
-			res += "Player";
-			res += (char)(player + '0');
-			res+=" Blackjack Push!\n";
+			bjresult += "Player";
+			bjresult += (char)(player + '0');
+			bjresult +=" Blackjack Tie!\n";
 		}else
 		if (playerHand == 21 && dealerHand != 21) {
-			res += "Player";
-			res += (char)(player + '0');
-			res += " Wins, Blackjack!\n";
+			bjresult += "Player";
+			bjresult += (char)(player + '0');
+			bjresult += " Wins, Blackjack!\n";
 		}else
 		if(playerHand != 21 && dealerHand == 21) {
-			res+= "Dealer Wins, Blackjack!\n";
+			bjresult += "Dealer Wins, Blackjack!\n";
 		}else
 		if (playerHand <21 && playerHand > dealerHand) {
-			res+= "Player";
-			res+= (char)(player + '0');
-			res += " Wins!\n";
+			bjresult += "Player";
+			bjresult += (char)(player + '0');
+			bjresult += " Wins!\n";
 		}else
 		if (playerHand > 21) {
-			res+= "Player";
-			res+= (char)(player + '0');
-			res += " Bust, lose!\n";
+			bjresult += "Player";
+			bjresult += (char)(player + '0');
+			bjresult += " Bust, lose!\n";
 		}else
 		if (dealerHand > 21) {
-			res+= "Dealer Bust, Player Wins!\n";
+			bjresult += "Dealer Bust, Player\n";
+			bjresult += (char)(player + '0');
+			bjresult += " Wins!\n";
 		}else
 		if (playerHand == dealerHand) {
-			res += "Player";
-			res += (char)(player + '0');
-			res+= " Push!\n";
+			bjresult += "Player";
+			bjresult += (char)(player + '0');
+			bjresult += " Tie!\n";
 		}else
 		if (playerHand < dealerHand) {
-			res += "Player";
-			res += (char)(player + '0');
-			res += " lose!\n";
+			bjresult += "Player";
+			bjresult += (char)(player + '0');
+			bjresult += " lose!\n";
 		}
 	}
-		cout << res << endl;
+		cout << bjresult << endl;
 }
 void turn() {
 	dealer* d = dealerSet.front();
@@ -283,7 +283,7 @@ void turn() {
 			if (c == 'H')
 				p->Draw();
 			else if (c == 'S')
-				/*Stand, do nothing*/;
+				/*Do nothing*/;
 			else
 				cout << "Invalid input, try again." << endl;
 			playerHand = p->Checkscore();
@@ -296,12 +296,10 @@ void turn() {
 }
 int main() {
     srand(time(0));
-	addDealer();
-	addPlayer();
-	addPlayer();
-	addPlayer();
-	addPlayer();
-	//Start game
+	createDealer();
+	for(int i=0;i<4;i++)
+	createPlayer();
+	
 	start();
 	turn();
 	checkWin();
