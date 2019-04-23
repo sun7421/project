@@ -158,7 +158,7 @@ int dealer::checkscore() {
 	void turn();
 	vector<dealer*>dealerSet;
 	vector<Player*>playerSet;
-	
+
 	void createDealer()
 	{
 		dealer* d = new dealer();
@@ -261,9 +261,11 @@ void turn() {
 int main() {
     srand(time(0));
 	createDealer();
-	for(int i=0;i<4;i++)
 	createPlayer();
-	
+	createPlayer();
+	createPlayer();
+	createPlayer();
+
 	start();
 	turn();
 	checkWin();
