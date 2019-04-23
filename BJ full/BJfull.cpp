@@ -42,11 +42,11 @@ void shuffler() {
 void showcards()
 {
 	cout << "card:" << endl;
-	int t=0;
+	int taew=0;
 	for (auto i : cards) {
 		cout << i << " ,";
-		t++;
-		if (t % 13 == 0) cout << endl;
+		taew++;
+		if (taew % 13 == 0) cout << endl;
 	}
 }
 bool cardempty()
