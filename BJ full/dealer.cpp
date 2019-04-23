@@ -31,7 +31,7 @@ void allcard()
 
 }
 void shuffler() {
-	//srand(time(0));
+	srand(time(0));
 	for (int i = 0; i < 52; i++)
     {
         swap(cards[i], cards[rand() % 52]);
@@ -39,7 +39,7 @@ void shuffler() {
     }
 }
 
-void showcards()
+/*void showcards()
 {
 	cout << "card:" << endl;
 
@@ -48,10 +48,10 @@ void showcards()
 		cout << x << " ,";
 		if (x% 13 == 0) cout << endl;
 	}
-}
+}*/
 
 
-/*void showcards()
+void showcards()
 {
 	cout << "card:" << endl;
 	int t=0;
@@ -60,7 +60,7 @@ void showcards()
 		t++;
 		if (t % 13 == 0) cout << endl;
 	}
-}*/
+}
 bool cardempty()
 {
     return cards.empty();
@@ -119,7 +119,7 @@ void Player::Double(){
 
 int Player::Checkscore() {
 	int sum = 0;
-	for (int i=0;i<=hand.size() ;i++) {
+	for (auto i : this->hand) {
 		if (i == 1 && sum + 11 <= 21) i = 11;
 		cout << "Card:" << i << endl;
 		sum += i;
@@ -136,10 +136,11 @@ char Player::playeraction() {
 }
 
 class dealer{
-	public:
+	//public:
 	vector<int>hand;
 	vector<Player*>playerSet;
 	//card draws;
+	public:
 	void setPlayerSet(vector<Player*>& playerSet);
 	vector<Player*> getPlayerSet();
 	void Draw2();
@@ -161,14 +162,18 @@ void dealer::draw() {
 }
 void dealer::Draw2() {
 	//int collect;
-	for(int i=0; i<2; i++){
+	//for(int i=0; i<2; i++){
 	//	collect = drawcard(draws.cards);
-		hand.push_back(drawcard());
-	}
+		//hand.push_back(drawcard());
+		this->draw();
+		this->draw();
+	//}
 
 	for (auto p : this->playerSet) {
-		this->draw();
-		this->draw();
+		//this->draw();
+		//this->draw();
+		p->Draw();
+		p->Draw();
 	}
 }
 int dealer::checkscore() {
