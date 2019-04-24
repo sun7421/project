@@ -241,11 +241,12 @@ void turn() {
 		cout << "Player" << player << "'s Hand" << endl;
 		int playerHand = p->Checkscore();
 		char c = ' ';
-		while (c != 'S' && playerHand < 21) {
+		
+		while (toupper(c) != 'S' && playerHand < 21) {
 			c = p->playeraction();
-			if (c == 'H')
+			if (toupper(c) == 'H')
 				p->Draw();
-			else if (c == 'S')
+			else if (toupper(c) == 'S')
 				/*Do nothing*/;
 			else
 				cout << "Invalid input, try again." << endl;
