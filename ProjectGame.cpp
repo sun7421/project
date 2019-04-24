@@ -123,13 +123,10 @@ void spawnstar()
 {
     srand(time(0));
     starpos += (rand%24);
-    ///ไม่แน่ใจว่าใช้ pointer ด้วยมั้ย
 }
 void player::goldenstar(){
         char staraction;
-        if(preposition<starpos){
-            if (position>=starpos)
-            {
+        if(preposition<starpos && position>=starpos){
                 cout << "You found a star!\n";
                 if(pcoin<20)
                 {
@@ -150,15 +147,14 @@ void player::goldenstar(){
                             cout << "Invalid input! try again";
                     }
                 }
-            }
         }
-            else
-            {   
-                if(starpos-position>0){
-                    cout<<starpos-position<< " slots left to the star!" << endl;
-                }
-                else cout <<23-(position-starposition)<< " slots left to the star!" << endl;
+        else
+        {   
+            if(starpos-position>0){
+                cout<<starpos-position<< " slots left to the star!" << endl;
             }
+                else cout <<23-(position-starposition)<< " slots left to the star!" << endl;
+        }
 }
 
 void printmap(){
