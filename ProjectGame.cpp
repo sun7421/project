@@ -6,109 +6,107 @@
 using namespace std;
     bool slot [22] = {};//เผื่อไว้
     int coin;//ว่าจะทำเป็น array แต่ติดตรงสวิตเคสว่าจรับค่าจากเจ้าของเทิร์นจะส่งค่ามายังไงเพราะตังมันมี4คน
-    int position=0 ;
     int starpos = 0;
     int turn=0;
-class game{
-    player *player;
-    public:
-        void wintheminigame(player *);
-        void goldenstar(player *a);
-        void newturn();
-		bool wincheck(player *);
-        void getstar(player *);
-        void minigame();
-        void sloteffect (player *);
-}
 class player{
 	string name;
-	int coin,playerstar=0;
+	int pcoin,playerstar=0,position=0,preposition;
 	public:
 		player(string);
 		void showcoin();
+        void wintheminigame();
+        void goldenstar();
+        void newturn();
+		bool wincheck();
+        void getstar();
+        void sloteffect ();
+        void rollthedice();
+        void goldenstar2();
 };
 
-void game::getstar(player *a)
+void player::getstar()
 {
-    a->playerstar++;
-    a->coin-=10;
+    playerstar++;
+    pcoin-=10;
     spawnstar();
 }
 player::player(string n){
 		name=n;
-		coin=10;
+		pcoin=10;
 	}
     void player::showcoin(){
 		cout << "---------------------------------------\n"; 
 		cout << name << "\n"; 
-		cout << "COIN: " << coin<<"\tSTAR: "<<star;		
+		cout << "COIN: " << pcoin<<"\tSTAR: "<<playerstar;		
 		cout << "\n---------------------------------------\n";
 	}	
 	
-    bool player::wincheck(player *a){
-		if(a->playerstar==3)return true;
+    bool player::wincheck(){
+		if(playerstar==3)return true;
 		else return false;
 };
 
-void game::sloteffect (player *a){
-    switch (p)
+void player::sloteffect (){
+    switch (position)
     {
         case 1:
-            a->coin=a->coin-rand()%3;
+            coin=coin-rand()%3;
+
             break;
         case 3:
-            a->coin=a->coin-rand()%3;
+            coin=coin-rand()%3;
             break;
         case 7:
-            a->coin=a->coin-rand()%3;
+            coin=coin-rand()%3;
             break;                
         case 12:
-            a->coin=a->coin-rand()%3;
+            coin=coin-rand()%3;
             break;
         case 15:
-            a->coin=a->coin-rand()%3;
+            coin=coin-rand()%3;
             break;
         case 18:
-            a->coin=a->coin-rand()%3;
+            coin=coin-rand()%3;
             break;        
         case 21:
-            a->coin=a->coin-rand()%3;
+            coin=coin-rand()%3;
             break;
         case 4:
-            a->coin=a->coin+rand()%3;
+            coin=coin+rand()%3;
             break;
         case 6:
-            a->coin=a->coin+rand()%3;    
+            coin=coin+rand()%3;    
             break;    
         case 9:
-            a->coin=a->coin+rand()%3;
+            coin=coin+rand()%3;
             break;
         case 16:
-            a->coin=a->coin+rand()%3;
+            coin=coin+rand()%3;
             break;
         case 22:
-            a->coin=a->coin+rand()%3;
+            coin=coin+rand()%3;
             break;
         default:
             break;
     }
 }
 //ติดเรื่องตัง
-void game::wintheminigame(player *a){
-    a->coin+=4;
+void player::wintheminigame(){
+    pcoin+=4;
 }
 void spawnstar()
 {
     srand(time(0));
-    starpos += (rand%24)+1;
+    starpos += (rand%24);
     ///ไม่แน่ใจว่าใช้ pointer ด้วยมั้ย
 }
-void game::goldenstar(player *a){
+void player::goldenstar(){
         char staraction;
+        if(preposition<starpos){
             if (position>=starpos)
             {
                 cout << "You found a star!\n";
-                if(coin<10)
+                if(pcoin<20)
                 {
                     cout << "Oh no! insufficient coin to buy a star\n";
                 }
@@ -128,11 +126,16 @@ void game::goldenstar(player *a){
                     }
                 }
             }
+        }
             else
-            {
-                cout << starpos-position << " slots left to the star!" << endl;
+            {   
+                if(starpos-position>0){
+                    cout<<starpos-position<< " slots left to the star!" << endl;
+                }
+                else cout <<23-(position-starposition)<< " slots left to the star!" << endl;
             }
 }
+
 void printmap(){
     cout <<" -----   -----   -----   -----   -----   -----   ----- \n";
     cout <<"|-coin| | Not | |black| |-coin| |+coin| |mine | |-coin|\n";
@@ -157,7 +160,7 @@ void printmap(){
     cout <<"|     | |sweep| |     | |     | |jack | |     | |     |\n";
     cout <<" -----   -----   -----   -----   -----   -----   ----- \n";
 }
-void game::minigame(){
+void minigame(){
     int randminigame;
     randminigame=rand()%1
     switch (randminigame)
@@ -170,38 +173,55 @@ void game::minigame(){
             break;
     }
 }
+void player::rollthedice(){
+    char run;
+    preposition=position;
+    cout << "press r to roll the dice\n";
+    cin>>run;
+    if (run=='r'||run=='R') {
+        int dice=rand()%6+1;
+        cout <<"your roll dice is "<< dice;
+        position+=dice;
+        if(position>=23)position-=23;
+        cout<<"\nyou position is " << position;
+}
 
 int main(){
     srand(time(0));
     string name;	
 	cout << "Please input player1 name: ";
 	getline(cin,name);	
-	Player player1(name);
+	Player p1(name);
     cout << "Please input player2 name: ";
 	getline(cin,name);	
-	Player player2(name);
+	Player p2(name);
     cout << "Please input player3 name: ";
 	getline(cin,name);	
-	Player player3(name);
+	Player p3(name);
     cout << "Please input player4 name: ";
 	getline(cin,name);	
-	Player player4(name);
-    while(!=wincheck(&player1)||!=wincheck(&player2)||!=wincheck(&player3)||!=wincheck(&player4)){
-        char run='r';
+	Player p4(name);
+    while(!=p1.wincheck()||!=p2.wincheck()||!=p3.wincheck()||!=p4.wincheck()){
         spawnstar();
         printmap();
-        cout << "Star position is " << starpos << endl;
-        cout << "press r to roll the dice\n";
-        cin>>run;
-        if (run=='r'||run=='R') {
-            int dice=rand()%6+1;
-            cout <<"your roll dice is "<< dice;
-        // changeposition (dice);
-            position+=dice;
-            cout<<"\nyou position is " << position;
-            sloteffect(position);
-            cout <<"\ncoin= "<< coin;
-            goldenstar();
-            }
+        if(turn%4==0){
+            p1.showcoin();
+            cout << "Star position is " << starpos << endl;
+            p1.rollthedice();
+            p1.sloteffect();
+        }
+        if(turn%4==1){
+            p2.showcoin();
+            cout << "Star position is " << starpos << endl;
+        }
+        if(turn%4==2){
+            p3.showcoin();
+            cout << "Star position is " << starpos << endl;
+        }
+        if(turn%4==3){
+            p4.showcoin();
+            cout << "Star position is " << starpos << endl;
+        }
+       goldenstar();
     }
 }
