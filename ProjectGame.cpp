@@ -5,13 +5,20 @@
 #include "BJfull"
 using namespace std;
     bool slot [22] = {};//เผื่อไว้
-    int coin;//ว่าจะทำเป็น array แต่ติดตรงสวิตเคสว่าจรับค่าจากเจ้าของเทิร์นจะส่งค่ามายังไงเพราะตังมันมี4คน
-    int position=0 ;
+    //int position=0 ;
     int starpos = 0;
     int turn=0;
 class game{
-    player *player;
+    //player *player;
+    string name;
+	int coin,playerstar=0;
+    int currentpos=0,oldpos=0;
+    ///
     public:
+        ///
+        player(string);
+		void showcoin();
+        ///
         void wintheminigame(player *);
         void goldenstar(player *a);
         void newturn();
@@ -20,13 +27,14 @@ class game{
         void minigame();
         void sloteffect (player *);
 }
-class player{
+/*class player{
 	string name;
 	int coin,playerstar=0;
+    int currentpos=0,oldpos=0;
 	public:
 		player(string);
 		void showcoin();
-};
+};*/
 
 void game::getstar(player *a)
 {
