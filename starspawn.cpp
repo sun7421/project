@@ -10,6 +10,7 @@ void spawnstar()
     srand(time(0));
     starpos += (rand%10)+20;
     ///เดี๋ยวมาแก้ ตามจำนวนช่องเดิน
+    ///อาจจะใช้ pointer ด้วย
 }
 
 class Player{
