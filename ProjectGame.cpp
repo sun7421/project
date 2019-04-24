@@ -22,7 +22,15 @@ class player{
         void getstar();
         void sloteffect ();
         void rollthedice();
+<<<<<<< HEAD
         void bank();
+=======
+	void toss();
+<<<<<<< HEAD
+        void goldenstar2();
+=======
+>>>>>>> e1a6a6f5120399cb0cef5f4feb66c6916904b6d9
+>>>>>>> 214c8a021fcddd6f4fba3649609225648e3bd641
 };
 
 void player::getstar()
@@ -239,5 +247,28 @@ int main(){
             cout << "Star position is " << starpos << endl;
         }
        goldenstar();
+    }
+	void player::toss(){
+    int bet,HT,ran;
+    ran=rand()%2;
+    cout << "Enter your Bet : " ;
+    cin >> bet;
+    do
+    {
+        cout << "choose your destiny drawwwwwww : ";
+    cout << "[0]choose Head [1] choose Tail" ;
+    cin >> HT;
+        
+    } while (HT!=0&&HT!=1);
+    
+    if(HT==ran){
+        cout << "you got coin = " << bet*2;
+        coin+=bet*2;
+        cout << "you total coin = " << coin;
+    }else
+    {
+        cout << "you loose coin = " << bet;
+        coin-=bet;
+        cout << "you total coin = " << coin;
     }
 }
