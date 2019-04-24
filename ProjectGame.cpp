@@ -8,13 +8,10 @@ using namespace std;
     int coin;//ว่าจะทำเป็น array แต่ติดตรงสวิตเคสว่าจรับค่าจากเจ้าของเทิร์นจะส่งค่ามายังไงเพราะตังมันมี4คน
     int starpos = 0;
     int turn=0;
+    int x=0;
 class player{
 	string name;
-<<<<<<< HEAD
 	int pcoin,playerstar=0,position=0,preposition;
-=======
-	int pcoin,playerstar=0,position=0;
->>>>>>> e1a6a6f5120399cb0cef5f4feb66c6916904b6d9
 	public:
 		player(string);
 		void showcoin();
@@ -25,10 +22,7 @@ class player{
         void getstar();
         void sloteffect ();
         void rollthedice();
-<<<<<<< HEAD
-        void goldenstar2();
-=======
->>>>>>> e1a6a6f5120399cb0cef5f4feb66c6916904b6d9
+        void bank();
 };
 
 void player::getstar()
@@ -52,6 +46,21 @@ player::player(string n){
 		if(playerstar==3)return true;
 		else return false;
 };
+void player::bank()
+{
+    if(preposition<pobank)
+    {
+        if(position>pobank)
+            {   this->pcoin-1;
+                x++;
+            }
+        else if (position=pobank)
+            {
+                this+x;
+                x=0;
+            }
+    }
+}
 
 void player::sloteffect (){
     switch (position)
