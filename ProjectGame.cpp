@@ -31,6 +31,7 @@ class player{
 =======
 >>>>>>> e1a6a6f5120399cb0cef5f4feb66c6916904b6d9
 >>>>>>> 214c8a021fcddd6f4fba3649609225648e3bd641
+	void badslot();
 };
 
 void player::getstar()
@@ -248,6 +249,7 @@ int main(){
         }
        goldenstar();
     }
+}
 	void player::toss(){
     int bet,HT,ran;
     ran=rand()%2;
@@ -270,5 +272,40 @@ int main(){
         cout << "you loose coin = " << bet;
         coin-=bet;
         cout << "you total coin = " << coin;
+    }
+void player::badslot(){
+    string anykey;
+    int destiny;
+    cout << "Press you lucky word\n";
+    cin >> anykey;
+    destiny=rand()%5;
+    switch (destiny)
+    {
+        case 0:
+            cout << "you loose nothing\n" ;
+            cout << "coin = " << coin << "star = " << star;
+            break;
+        case 1:
+            cout << "you loose 20 coin\n" ;
+            coin -= 20;
+            cout << "coin = " << coin << "star = " << star;
+            break;
+        case 2:
+            coin -= 100;
+            cout << "you lose 100 coin\n" ;
+            cout << "coin = " << coin << "star = " << star;
+            break;  
+        case 3:
+            cout << "you lose one star\n" ;
+            star -= 1;
+            cout << "coin = " << coin << "star = " << star;
+            break;      
+        case 4:
+            cout << "you loose two star\n" ;
+            coin -= 2;
+            cout << "coin = " << coin << "star = " << star;
+            break;
+        default:
+            break;
     }
 }
