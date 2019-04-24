@@ -10,7 +10,11 @@ using namespace std;
     int turn=0;
 class player{
 	string name;
+<<<<<<< HEAD
 	int pcoin,playerstar=0,position=0,preposition;
+=======
+	int pcoin,playerstar=0,position=0;
+>>>>>>> e1a6a6f5120399cb0cef5f4feb66c6916904b6d9
 	public:
 		player(string);
 		void showcoin();
@@ -21,7 +25,10 @@ class player{
         void getstar();
         void sloteffect ();
         void rollthedice();
+<<<<<<< HEAD
         void goldenstar2();
+=======
+>>>>>>> e1a6a6f5120399cb0cef5f4feb66c6916904b6d9
 };
 
 void player::getstar()
