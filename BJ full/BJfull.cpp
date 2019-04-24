@@ -22,13 +22,13 @@ bool cardempty();
 
 void allcard()
 {
-    cards = {A,2,3,4,5,6,7,8,9,10,J,Q,K,
-             A,2,3,4,5,6,7,8,9,10,J,Q,K,
-             A,2,3,4,5,6,7,8,9,10,J,Q,K,
-             A,2,3,4,5,6,7,8,9,10,J,Q,K};
+    int temcard1[52] = {A,2,3,4,5,6,7,8,9,10,J,Q,K,
+                A,2,3,4,5,6,7,8,9,10,J,Q,K,
+                A,2,3,4,5,6,7,8,9,10,J,Q,K,
+                A,2,3,4,5,6,7,8,9,10,J,Q,K};
 
-
-
+    vector<int> temcard2(temcard1,temcard1+52);
+    cards = temcard2;
 }
 void shuffler() {
 	srand(time(0));
@@ -43,8 +43,10 @@ void showcards()
 {
 	cout << "card:" << endl;
 	int taew=0;
-	for (auto i : cards) {
-		cout << i << " ,";
+	//for (auto i : cards) {
+	for (int i = 0; i < cards.size(); ++i) {
+		//cout << i << " ,";
+		cout << cards[i] << " ,";
 		taew++;
 		if (taew % 13 == 0) cout << endl;
 	}
@@ -65,14 +67,9 @@ int drawcard()
 class Player {
 private:
 	vector<int>hand;
-	int pmoney;
-	int bet=0;
-	int sidebet=0;
 public:
 	void Draw();
 	void Stand();
-	void Double();
-	//void Split();
 	int Checkscore();
 	char playeraction();
 };
@@ -86,13 +83,10 @@ void Player::Stand(){
 	//Do nothing
 }
 
-void Player::Double(){
-    this->bet *= 2;
-}
-
 int Player::Checkscore() {
 	int sum = 0;
-	for (auto i : this->hand) {
+	for (int j = 0; j < this->hand.size(); ++j) {
+		int i = this->hand.at(j);
 		if (i == 1 && sum + 11 <= 21) i = 11;
 		cout << "Card:" << i << endl;
 		sum += i;
@@ -135,7 +129,8 @@ void dealer::Draw2() {
 		this->draw();
 		this->draw();
 
-	for (auto p : this->playerSet) {
+	for (int i = 0; i < this->playerSet.size(); ++i) {
+    Player* p = this->playerSet[i];
 		p->Draw();
 		p->Draw();
 	}
@@ -143,7 +138,8 @@ void dealer::Draw2() {
 int dealer::checkscore() {
 	int sum = 0;
 	cout << "Dealer Hand:" << endl;
-	for (auto i : this->hand) {
+	for (int j = 0; j < this->hand.size(); ++j) {
+		int i = this->hand.at(j);
 		if (i == 1 && sum + 11 <= 21) i = 11;
 		cout << "Card:" << i << endl;
 		sum += i;
@@ -151,15 +147,15 @@ int dealer::checkscore() {
 	return sum;
 }
 
-	void createDealer();
-	void createPlayer();
-	void start();
-	void checkWin();
-	void turn();
-	vector<dealer*>dealerSet;
-	vector<Player*>playerSet;
+void createDealer();
+void createPlayer();
+void start();
+void checkWin();
+void turn();
+vector<dealer*>dealerSet;
+vector<Player*>playerSet;
 
-	void createDealer()
+void createDealer()
 	{
 		dealer* d = new dealer();
 		dealerSet.push_back(d);
@@ -186,8 +182,12 @@ void checkWin() {
 	int dealerHand=d->checkscore();
 	int player = 0;
 
+	vector<Player*>tempset = d->getPlayerSet();
+
 	string bjresult = "";
-	for (auto p : d->getPlayerSet()) {
+	//for (auto p : d->getPlayerSet()) {
+	for (int i = 0; i < tempset.size(); ++i) {
+    Player* p = tempset[i];
 		player++;
 		cout << "Player" << player << "'s Hand" << endl;
 		int playerHand = p->Checkscore();
@@ -215,7 +215,7 @@ void checkWin() {
 			bjresult += " Bust, lose!\n";
 		}else
 		if (dealerHand > 21) {
-			bjresult += "Dealer Bust, Player\n";
+			bjresult += "Dealer Bust, Player";
 			bjresult += (char)(player + '0');
 			bjresult += " Wins!\n";
 		}else
@@ -235,7 +235,9 @@ void checkWin() {
 void turn() {
 	dealer* d = dealerSet.front();
 	int player = 0;
-	for (auto p : d->getPlayerSet()) {
+	vector<Player*>tempset2 = d->getPlayerSet();
+	for (int i = 0; i < tempset2.size(); ++i) {
+    	Player* p = tempset2[i];
 		player++;
 		cout << endl;
 		cout << "******Player" << player << "'s move*******" << endl;
