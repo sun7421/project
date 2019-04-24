@@ -43,9 +43,7 @@ void showcards()
 {
 	cout << "card:" << endl;
 	int taew=0;
-	//for (auto i : cards) {
 	for (int i = 0; i < cards.size(); ++i) {
-		//cout << i << " ,";
 		cout << cards[i] << " ,";
 		taew++;
 		if (taew % 13 == 0) cout << endl;
@@ -185,7 +183,6 @@ void checkWin() {
 	vector<Player*>tempset = d->getPlayerSet();
 
 	string bjresult = "";
-	//for (auto p : d->getPlayerSet()) {
 	for (int i = 0; i < tempset.size(); ++i) {
     Player* p = tempset[i];
 		player++;
