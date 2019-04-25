@@ -12,7 +12,16 @@ class number
     void numb();
     void shuffle();
     void numbcal();
+    void showcase();
 };
+void number::showcase()
+{
+
+
+
+
+    
+}
 void number::numb()
 {
  for(int i=0;i<4;i++)
@@ -29,23 +38,24 @@ void number::shuffle()
 }
 void number::numbcal()
 {   
-    int j,k,l;
+    int j,k,l,B;
     int i = rand()%4;
     if(i=0){ j= i+1; k=i+2;l=i+3;}
     else if (i=1){ j= i-1; k=i+1;l=i+2;}
     else if (i=2){ j= i-2; k=i-1;l=i+1;}
     else if (i=3){ j= i-3; k=i-2;l=i+1;}
     switch (rand()%4)
-        case 1: ((y[l]*y[i])+y[j])-y[k];
+    {
+        case 1: B=((y[l]*y[i])+y[j])-y[k];
             break;
-        case 2:  ((y[i]+y[l])*y[k])-y[j];
+        case 2:  B=((y[i]+y[l])*y[k])-y[j];
             break;
-        case 3: ((y[i]-y[l])*y[j])-y[k];
+        case 3: B=((y[i]-y[l])*y[j])-y[k];
             break;
-        case 4:((y[j]+y[k])*y[l])-y[i];
+        case 4:B=((y[j]+y[k])*y[l])-y[i];
             break;
+    }
    }
-}
 
 
 int main()
