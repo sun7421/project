@@ -24,15 +24,16 @@ void number::Checkwin()
 {
     string t;
         cout<< "Show your knowledge please?\n";
-        cout<<"Your answer is? = ";
-        cin>>answer;
+        
         for(int i=0;i<1;i++)
-        {
+        {cout<<"Your answer is? = ";
+        cin>>answer;
+
             if(ans==answer)
             {cout<<"You so genius";}
             else
             {
-                cout<< "You are stupid";
+                cout<< "You are stupid\n";
                for(int j=0;j<1;j++)
                {
                 cout<<"Stupid do you want a solution? (yes or no ): ";
@@ -55,16 +56,16 @@ void number::giveque()
     switch (A)
     {
         case 1: 
-        cout <<  " = ((" << y[l] <<" * " << y[e] << ") + " << y[j] <<") - " << y[k]<<"= ";
+        cout <<  " ((" << y[l] <<" * " << y[e] << ") + " << y[j] <<") - " << y[k]<<"= \n";
         break;
         case 2:
-        cout << " = ((" << y[e] <<" + " << y[l] << ") * " << y[k] <<") - " << y[j]<<"= ";
+        cout << " ((" << y[e] <<" + " << y[l] << ") * " << y[k] <<") - " << y[j]<<"= \n";
         break;
         case 3: 
-        cout <<  " = ((" << y[e] <<" - " << y[l] << ") * " << y[j] <<") - " << y[k]<<"= ";
+        cout <<  " ((" << y[e] <<" - " << y[l] << ") * " << y[j] <<") - " << y[k]<<"= \n";
         break;
         case 4:
-        cout << " ((" << y[j] <<" + " << y[k] << ") * " << y[l] <<") - " << y[e]<<"= ";
+        cout << " ((" << y[j] <<" + " << y[k] << ") * " << y[l] <<") - " << y[e]<<"= \n";
         break;
     }
 
@@ -87,10 +88,10 @@ int number::numbcal()
     A = rand()%4+1;
     e = rand()%4;
     ans=0;
-    if(e=0){ j= e+1; k=e+2;l=e+3;}
-    else if (e=1){ j= e-1; k=e+1;l=e+2;}
-    else if (e=2){ j= e-2; k=e-1;l=e+1;}
-    else if (e=3){ j= e-3; k=e-2;l=e+1;}
+    if(e==0){ j= e+1; k=e+2;l=e+3;}
+    else if (e==1){ j= e-1; k=e+1;l=e+2;}
+    else if (e==2){ j= e-2; k=e-1;l=e+1;}
+    else if (e==3){ j= e-3; k=e-2;l=e+1;}
     switch (A)
     {
         case 1: ans=((y[l]*y[e])+y[j])-y[k];
