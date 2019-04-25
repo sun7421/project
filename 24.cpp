@@ -23,15 +23,15 @@ void number::solution(int a)
         case 1: 
         cout << ans << " = ((" << y[l] <<" * " << y[i] << ") + " << y[j] <<") - " << y[k];
         break;
-        case 2:  ans=((y[i]+y[l])*y[k])-y[j];
-            
-            return ans;
-        case 3: ans=((y[i]-y[l])*y[j])-y[k];
-            
-            return ans;
-        case 4:ans=((y[j]+y[k])*y[l])-y[i];
-            
-            return ans;
+        case 2:
+        cout << ans << " = ((" << y[i] <<" + " << y[l] << ") * " << y[k] <<") - " << y[j];
+        break;
+        case 3: 
+        cout << ans << " = ((" << y[i] <<" - " << y[l] << ") * " << y[j] <<") - " << y[k];;
+        break;
+        case 4:
+        cout << ans << " = ((" << y[j] <<" + " << y[k] << ") * " << y[l] <<") - " << y[i];
+        break;
     }
 
 
