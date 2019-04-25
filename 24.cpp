@@ -7,8 +7,8 @@
 using namespace std;
 class number
 {
-    public:
-    int x,j,k,l,i;
+    public: 
+    int x,j,k,l,e;
     int A;
     int ans;
     int answer;
@@ -28,7 +28,7 @@ void number::Checkwin()
         cin>>answer;
         for(int i=0;i<1;i++)
         {
-            if(answer=ans)
+            if(ans==answer)
             {cout<<"You so genius";}
             else
             {
@@ -50,17 +50,17 @@ void number::giveque()
 {
     switch (A)
     {
-        case 1:
-        cout <<  " = ((" << y[l] <<" * " << y[i] << ") + " << y[j] <<") - " << y[k]<<"= ";
+        case 1: 
+        cout <<  " = ((" << y[l] <<" * " << y[e] << ") + " << y[j] <<") - " << y[k]<<"= ";
         break;
         case 2:
-        cout << " = ((" << y[i] <<" + " << y[l] << ") * " << y[k] <<") - " << y[j]<<"= ";
+        cout << " = ((" << y[e] <<" + " << y[l] << ") * " << y[k] <<") - " << y[j]<<"= ";
         break;
-        case 3:
-        cout <<  " = ((" << y[i] <<" - " << y[l] << ") * " << y[j] <<") - " << y[k]<<"= ";
+        case 3: 
+        cout <<  " = ((" << y[e] <<" - " << y[l] << ") * " << y[j] <<") - " << y[k]<<"= ";
         break;
         case 4:
-        cout << " ((" << y[j] <<" + " << y[k] << ") * " << y[l] <<") - " << y[i]<<"= ";
+        cout << " ((" << y[j] <<" + " << y[k] << ") * " << y[l] <<") - " << y[e]<<"= ";
         break;
     }
 
@@ -81,21 +81,21 @@ void number::shuffle()
 int number::numbcal()
 {
     A = rand()%4+1;
-    i = rand()%4;
+    e = rand()%4;
     ans=0;
-    if(i=0){ j= i+1; k=i+2;l=i+3;}
-    else if (i=1){ j= i-1; k=i+1;l=i+2;}
-    else if (i=2){ j= i-2; k=i-1;l=i+1;}
-    else if (i=3){ j= i-3; k=i-2;l=i+1;}
+    if(e=0){ j= e+1; k=e+2;l=e+3;}
+    else if (e=1){ j= e-1; k=e+1;l=e+2;}
+    else if (e=2){ j= e-2; k=e-1;l=e+1;}
+    else if (e=3){ j= e-3; k=e-2;l=e+1;}
     switch (A)
     {
-        case 1: ans=((y[l]*y[i])+y[j])-y[k];
+        case 1: ans=((y[l]*y[e])+y[j])-y[k];
             return ans;
-        case 2:  ans=((y[i]+y[l])*y[k])-y[j];
+        case 2:  ans=((y[e]+y[l])*y[k])-y[j];
             return ans;
-        case 3: ans=((y[i]-y[l])*y[j])-y[k];
+        case 3: ans=((y[e]-y[l])*y[j])-y[k];
             return ans;
-        case 4:ans=((y[j]+y[k])*y[l])-y[i];
+        case 4:ans=((y[j]+y[k])*y[l])-y[e];
             return ans;
     }
 
