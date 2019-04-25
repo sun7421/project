@@ -12,4 +12,4 @@ class number
 int main()
 {
 
-}
+};
