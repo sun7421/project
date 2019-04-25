@@ -37,9 +37,13 @@ void number::numbcal()
         else if (i=3){ j= i-3; k=i-2;l=i+1;}
         switch (A)
             case 1: ((y[l]*y[i])+y[j])-y[k];
+            break;
             case 2:  ((y[i]+y[l])*y[k])-y[j];
+            break;
             case 3: ((y[i]-y[l])*y[j])-y[k];
+            break;
             case 4:((y[j]+y[k])*y[l])-y[i];
+            break;
    }
 }
 
