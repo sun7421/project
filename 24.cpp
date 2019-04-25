@@ -33,8 +33,10 @@ void number::numbcal()
     for(int i=0;i<3;i++)
    {    int j= i+1;int k=i+2;int l=i+3;
         switch (A)
-            case 1: ((y[l]*y[i])+y[j])-y[k]
-            case 2;   y[]
+            case 1: ((y[l]*y[i])+y[j])-y[k];
+            case 2:  ((y[i]+y[l])*y[k])-y[j];
+            case 3: ((y[i]-y[l])*y[j])-y[k];
+            case 4:((y[j]+y[k])*y[l])-y[i];
    }
 }
 
