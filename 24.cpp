@@ -7,7 +7,7 @@ using namespace std;
 class number
 {
     public: 
-    int x;
+    int x,j,k,l,i;
     int A=rand()%4+1; 
     int ans;
     int answer;
@@ -81,8 +81,7 @@ void number::shuffle()
 }
 int number::numbcal()
 {   
-    int j,k,l;
-    int i = rand()%4;
+     i = rand()%4;
     ans=0;
     if(i=0){ j= i+1; k=i+2;l=i+3;}
     else if (i=1){ j= i-1; k=i+1;l=i+2;}
