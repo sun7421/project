@@ -16,8 +16,10 @@ class number
     void shuffle();
     int numbcal();
     void solution();
+    void giveque();
     void Checkwin();
 };
+ 
 void number::Checkwin()
 {   
     char t;
@@ -35,7 +37,7 @@ void number::Checkwin()
                {
                 cout<<"Stupid do you want a solution? (yes or no ): ";
                 cin>> t;
-                if(t='yes'||'Yes'){cout<< "if your brain is a superhero ,You are a invisibleman\n"<<solution;}
+                if(t='yes'||'Yes'){cout<< "if your brain is a superhero ,You are a invisibleman\n";solution();}
                 else if (t='no'||'No'){i=0;}
                 else {cout<<"Invalid";j=0;}
                }
@@ -44,21 +46,21 @@ void number::Checkwin()
         }
 
 }
-void number::solution()
+void number::giveque()
 {
     switch (A)
     {
         case 1: 
-        cout << ans << " = ((" << y[l] <<" * " << y[i] << ") + " << y[j] <<") - " << y[k];
+        cout <<  " = ((" << y[l] <<" * " << y[i] << ") + " << y[j] <<") - " << y[k]<<"= ";
         break;
         case 2:
-        cout << ans << " = ((" << y[i] <<" + " << y[l] << ") * " << y[k] <<") - " << y[j];
+        cout << " = ((" << y[i] <<" + " << y[l] << ") * " << y[k] <<") - " << y[j]<<"= ";
         break;
         case 3: 
-        cout << ans << " = ((" << y[i] <<" - " << y[l] << ") * " << y[j] <<") - " << y[k];;
+        cout <<  " = ((" << y[i] <<" - " << y[l] << ") * " << y[j] <<") - " << y[k]<<"= ";
         break;
         case 4:
-        cout << ans << " = ((" << y[j] <<" + " << y[k] << ") * " << y[l] <<") - " << y[i];
+        cout << " ((" << y[j] <<" + " << y[k] << ") * " << y[l] <<") - " << y[i]<<"= ";
         break;
     }
 
@@ -67,17 +69,14 @@ void number::solution()
 }
 void number::numb()
 {
- for(int i=0;i<4;i++)
-    {   y.push_back(rand()%99+1);
-        cout<<y<<" ";
-    }
+    cout<<"I will show you a question\n";
+    f   or(int i=0;i<4;i++)
+       y.push_back(rand()%99+1);
 }
 void number::shuffle()
 {
 	for (int i = 0; i < 4; i++)
-    {
         swap(y[i],y[rand()%4]);
-    }
 }
 int number::numbcal()
 {   
@@ -105,6 +104,13 @@ int number::numbcal()
 int main()
 {
     srand(time(0));
+    number a;
+    a.numb();
+    a.shuffle();
+    a.numbcal();
+    a.giveque();
+    a.Checkwin();
+
 
     return 0;
 }
