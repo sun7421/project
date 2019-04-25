@@ -42,7 +42,7 @@ void player:: check()
 {
         if(!strcmp(bot,player1))
         {
-            cout<<"no win\n";
+            cout<<"Draw\n";
         }
         else if(strcmp("paper",player1))
             {
