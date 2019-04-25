@@ -37,7 +37,11 @@ void number::Checkwin()
                {
                 cout<<"Stupid do you want a solution? (yes or no ): ";
                 cin>> t;
-                if(t=="yes"||"Yes"){cout<< "if your brain is a superhero ,You are a invisibleman\n";solution();}
+                if(t=="yes"||"Yes")
+                {
+                cout<< "if your brain is a superhero ,You are a invisibleman\n";
+                cout << ans;
+                }
                 else if (t=="no"||"No"){i=0;}
                 else {cout<<"Invalid";j=0;}
                }
