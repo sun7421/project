@@ -10,8 +10,14 @@ class number
     int x; 
     void numb();
 };
+
+
+
 int main()
 {
-   // srand(time(0));
+    srand(time(0));
+    vector<int> numb;
+    
+
     return 0;
 }
