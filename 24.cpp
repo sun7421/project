@@ -7,28 +7,27 @@ using namespace std;
 class number
 {
     public: 
-    int x,j,k,l,i;
-    int A=rand()%4+1; 
+    int x,j,k,l,e;
+    int A;
     int ans;
     int answer;
     vector<int>y;
     void numb();
     void shuffle();
     int numbcal();
-    void solution();
     void giveque();
     void Checkwin();
 };
  
 void number::Checkwin()
 {   
-    char t;
+    string t;
         cout<< "Show your knowledge please?\n";
         cout<<"Your answer is? = ";
         cin>>answer;
         for(int i=0;i<1;i++)
         {
-            if(answer=ans)
+            if(ans==answer)
             {cout<<"You so genius";}
             else 
             {   
@@ -37,8 +36,8 @@ void number::Checkwin()
                {
                 cout<<"Stupid do you want a solution? (yes or no ): ";
                 cin>> t;
-                if(t='yes'||'Yes'){cout<< "if your brain is a superhero ,You are a invisibleman\n";solution();}
-                else if (t='no'||'No'){i=0;}
+                if(t="yes"||"Yes"){cout<< "if your brain is a superhero ,You are a invisibleman\n";solution();}
+                else if (t="no"||"No"){i=0;}
                 else {cout<<"Invalid";j=0;}
                }
 
@@ -51,16 +50,16 @@ void number::giveque()
     switch (A)
     {
         case 1: 
-        cout <<  " = ((" << y[l] <<" * " << y[i] << ") + " << y[j] <<") - " << y[k]<<"= ";
+        cout <<  " = ((" << y[l] <<" * " << y[e] << ") + " << y[j] <<") - " << y[k]<<"= ";
         break;
         case 2:
-        cout << " = ((" << y[i] <<" + " << y[l] << ") * " << y[k] <<") - " << y[j]<<"= ";
+        cout << " = ((" << y[e] <<" + " << y[l] << ") * " << y[k] <<") - " << y[j]<<"= ";
         break;
         case 3: 
-        cout <<  " = ((" << y[i] <<" - " << y[l] << ") * " << y[j] <<") - " << y[k]<<"= ";
+        cout <<  " = ((" << y[e] <<" - " << y[l] << ") * " << y[j] <<") - " << y[k]<<"= ";
         break;
         case 4:
-        cout << " ((" << y[j] <<" + " << y[k] << ") * " << y[l] <<") - " << y[i]<<"= ";
+        cout << " ((" << y[j] <<" + " << y[k] << ") * " << y[l] <<") - " << y[e]<<"= ";
         break;
     }
 
@@ -70,7 +69,7 @@ void number::giveque()
 void number::numb()
 {
     cout<<"I will show you a question\n";
-    f   or(int i=0;i<4;i++)
+    for(int i=0;i<4;i++)
        y.push_back(rand()%99+1);
 }
 void number::shuffle()
@@ -80,21 +79,22 @@ void number::shuffle()
 }
 int number::numbcal()
 {   
-     i = rand()%4;
+      A=rand()%4+1; 
+      e = rand()%4;
     ans=0;
-    if(i=0){ j= i+1; k=i+2;l=i+3;}
-    else if (i=1){ j= i-1; k=i+1;l=i+2;}
-    else if (i=2){ j= i-2; k=i-1;l=i+1;}
-    else if (i=3){ j= i-3; k=i-2;l=i+1;}
+    if(e=0){ j= e+1; k=e+2;l=e+3;}
+    else if (e=1){ j= e-1; k=e+1;l=e+2;}
+    else if (e=2){ j= e-2; k=e-1;l=e+1;}
+    else if (e=3){ j= e-3; k=e-2;l=e+1;}
     switch (A)
     {
-        case 1: ans=((y[l]*y[i])+y[j])-y[k];
+        case 1: ans=((y[l]*y[e])+y[j])-y[k];
             return ans;
-        case 2:  ans=((y[i]+y[l])*y[k])-y[j];
+        case 2:  ans=((y[e]+y[l])*y[k])-y[j];
             return ans;
-        case 3: ans=((y[i]-y[l])*y[j])-y[k];
+        case 3: ans=((y[e]-y[l])*y[j])-y[k];
             return ans;
-        case 4:ans=((y[j]+y[k])*y[l])-y[i];
+        case 4:ans=((y[j]+y[k])*y[l])-y[e];
             return ans;
     }
    
