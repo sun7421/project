@@ -7,7 +7,8 @@ using namespace std;
 class number
 {
     public: 
-    int x; 
+    int x;
+    int A=rand()%4+1; 
     int ans;
     vector<int>y;
     void numb();
@@ -15,10 +16,23 @@ class number
     int numbcal();
     void solution();
 };
-void number::solution()
+void number::solution(int a)
 {
-
-
+    switch (A)
+    {
+        case 1: 
+        cout << ans << " = ((" << y[l] <<" * " << y[i] << ") + " << y[j] <<") - " << y[k];
+        break;
+        case 2:  ans=((y[i]+y[l])*y[k])-y[j];
+            
+            return ans;
+        case 3: ans=((y[i]-y[l])*y[j])-y[k];
+            
+            return ans;
+        case 4:ans=((y[j]+y[k])*y[l])-y[i];
+            
+            return ans;
+    }
 
 
 
@@ -46,7 +60,7 @@ int number::numbcal()
     else if (i=1){ j= i-1; k=i+1;l=i+2;}
     else if (i=2){ j= i-2; k=i-1;l=i+1;}
     else if (i=3){ j= i-3; k=i-2;l=i+1;}
-    switch (rand()%4)
+    switch (A)
     {
         case 1: ans=((y[l]*y[i])+y[j])-y[k];
             return ans;
@@ -58,11 +72,12 @@ int number::numbcal()
             return ans;
     }
    
-   }
+}
 
 
 int main()
 {
     srand(time(0));
+
     return 0;
 }
