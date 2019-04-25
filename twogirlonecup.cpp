@@ -15,7 +15,6 @@ class player
     void chub();
     void check();
     void bot1();
-
 };
 void player:: bot1()
 {   
@@ -30,7 +29,6 @@ void player:: bot1()
          char_array[i];
     strcpy(bot,char_array) ;
     cout<<bot<<"\n";
-    
 }
 void player:: chub()
 {
