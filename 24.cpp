@@ -8,13 +8,41 @@ class number
 {
     public: 
     int x; 
+    int answer;
     int ans;
     vector<int>y;
     void numb();
     void shuffle();
     int numbcal();
     void solution();
+    void Checkwin();
 };
+void number::Checkwin()
+{   
+    char t;
+        cout<< "Show your knowledge please?\n";
+        cout<<"Your answer is? = ";
+        cin>>answer;
+        for(int i=0;i<1;i++)
+        {
+            if(answer=ans)
+            {cout<<"You so genius";}
+            else 
+            {   
+                cout<< "ํYou are stupid";
+               for(int j=0;j<1;j++)
+               {
+                cout<<"Stupid do you want a solution? (yes or no ): ";
+                cin>> t;
+                if(t='yes'||'Yes'){cout<< "if your brain is a superhero ,You are a invisibleman\n"<<solution;}
+                else if (t='no'||'No'){i=0;}
+                else {cout<<"Invalid";j=0;}
+               }
+
+            }
+        }
+
+}
 void number::solution()
 {
 
