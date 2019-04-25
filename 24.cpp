@@ -23,28 +23,32 @@ class number
 void number::Checkwin()
 {
     string t;
-        cout<< "Show your knowledge please?\n";
+        cout<< "\nShow your knowledge please?\n";
         
-        for(int i=0;i<1;i++)
+        for(int i=0;i<1;)
         {cout<<"Your answer is? = ";
         cin>>answer;
 
             if(ans==answer)
-            {cout<<"You so genius";}
+            {cout<<"You so genius\n";break;}
+            
             else
             {
                 cout<< "You are stupid\n";
-               for(int j=0;j<1;j++)
+                i++;
+               for(int j=0;j<1;)
                {
                 cout<<"Stupid do you want a solution? (yes or no ): ";
                 cin>> t;
-                if(t=="yes"||"Yes")
+                j++;
+                if(t=="yes"||t=="Yes")
                 {
                 cout<< "if your brain is a superhero ,You are a invisibleman\n";
-                cout << ans;
+                giveque();
+                cout << ans << endl;
                 }
-                else if (t=="no"||"No"){i=0;}
-                else {cout<<"Invalid";j=0;}
+                else if (t=="no"||t=="No"){i=0;}
+                else {cout<<"Invalid\n";j=0;}
                }
 
             }
@@ -56,16 +60,16 @@ void number::giveque()
     switch (A)
     {
         case 1: 
-        cout <<  " ((" << y[l] <<" * " << y[e] << ") + " << y[j] <<") - " << y[k]<<"= \n";
+        cout <<  " ((" << y[l] <<" * " << y[e] << ") + " << y[j] <<") - " << y[k]<<"= ";
         break;
         case 2:
-        cout << " ((" << y[e] <<" + " << y[l] << ") * " << y[k] <<") - " << y[j]<<"= \n";
+        cout << " ((" << y[e] <<" + " << y[l] << ") * " << y[k] <<") - " << y[j]<<"= ";
         break;
         case 3: 
-        cout <<  " ((" << y[e] <<" - " << y[l] << ") * " << y[j] <<") - " << y[k]<<"= \n";
+        cout <<  " ((" << y[e] <<" - " << y[l] << ") * " << y[j] <<") - " << y[k]<<"= ";
         break;
         case 4:
-        cout << " ((" << y[j] <<" + " << y[k] << ") * " << y[l] <<") - " << y[e]<<"= \n";
+        cout << " ((" << y[j] <<" + " << y[k] << ") * " << y[l] <<") - " << y[e]<<"= ";
         break;
     }
 
