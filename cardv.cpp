@@ -100,7 +100,7 @@ void twf::showque()
                         for(int i=0;i<4;i++){cout <<y[i]<<" ";z.push_back(y[i]);}
                     
         }
-        
+
     
  void twf::answers()
         {
