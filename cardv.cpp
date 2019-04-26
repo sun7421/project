@@ -150,7 +150,7 @@ void twf::input()
         i++;
          cout<<"input secondnum only ("<<y[e]<<","<<y[j]<<","<<y[k]<<","<<y[l]<<") (*except "<<ca<<")\n";
          cin>>cb;
-         if(cb==ca||cb==0){  cout<<"invalid"; i--;}
+         if(cb==0){  cout<<"invalid"; i--;}
         else if(cb==y[e]||cb==y[j]||cb==y[k]||cb==y[l])break;
         else {
                 cout<<"invalid";
@@ -232,9 +232,11 @@ for(int i=0;i<1;)
 void twf::next2()
 {
     for(int i=0;i<4;i++)
-    {if(y[i]==ca)y[i]=B;}
+    {if(y[i]==ca)y[i]=B;
+    break;}
     for(int j=0;j<4;j++)
-    {if(y[j]==cb)y[j]=0;}
+    {if(y[j]==cb)y[j]=0;
+    break;}
     for(int k=0;k<4;k++)
     cout<<y[k]<<" ";
     input2();
@@ -273,5 +275,6 @@ int main()
     a.next2();
     a.next2();
     a.how2win();
+    return 0;
 
 }
