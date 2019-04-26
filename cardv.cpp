@@ -37,7 +37,8 @@ void twf::showque()
     shuffle();
     randnum();
      copyshow();
-    cout<<" = "<<ans<<endl;
+    cout<<" = "<<ans<<" (You can't do it to 0)"<<endl;
+
 }
         int twf::randnum()
         {
@@ -47,7 +48,7 @@ void twf::showque()
             if(e==0){ j= e+1; k=e+2;l=e+3;}
             else if (e==1){ j= e-1; k=e+1;l=e+2;}
             else if (e==2){ j= e-2; k=e-1;l=e+1;}
-            else if (e==3){ j= e-3; k=e-2;l=e+1;}
+            else if (e==3){ j= e-3; k=e-2;l=e-1;}
             switch (A)
             {
                 case 1: ans=((y[l]*y[e])+y[j])-y[k];
@@ -97,6 +98,7 @@ void twf::showque()
                             }  
                         } 
                         for(int i=0;i<4;i++){cout <<y[i]<<" ";z.push_back(y[i]);}
+                    
         }
         
     
@@ -106,16 +108,16 @@ void twf::showque()
             switch (A)
             {
                 case 1: 
-                cout <<  " ((" << c2 <<" * " << c1 << ") + " << c3 <<") - " << c4<<"= ";
+                cout <<  " ((" << c2 <<" * " << c1 << ") + " << c3 <<") - " << c4<<" = ";
                 break;
                 case 2:
-                cout << " ((" << c1 <<" + " << c2 << ") * " << c4 <<") - " << c3<<"= ";
+                cout << " ((" << c1 <<" + " << c2 << ") * " << c4 <<") - " << c3<<" = ";
                 break;
                 case 3: 
-                cout <<  " ((" << c1 <<" - " << c2 << ") * " << c3 <<") - " << c4<<"= ";
+                cout <<  " ((" << c1 <<" - " << c2 << ") * " << c3 <<") - " << c4<<" = ";
                 break;
                 case 4:
-                cout << " ((" << c3 <<" + " << c4 << ") * " << c2 <<") - " << c1<<"= ";
+                cout << " ((" << c3 <<" + " << c4 << ") * " << c2 <<") - " << c1<<" = ";
                 break;
             }
         }
@@ -232,11 +234,10 @@ for(int i=0;i<1;)
 void twf::next2()
 {
     for(int i=0;i<4;i++)
-    {if(y[i]==ca)y[i]=B;
-    break;}
+    {if(ca==y[i])y[i]=B;
+    }
     for(int j=0;j<4;j++)
-    {if(y[j]==cb)y[j]=0;
-    break;}
+    {if(cb==y[j])y[j]=0;}
     for(int k=0;k<4;k++)
     cout<<y[k]<<" ";
     input2();
@@ -264,7 +265,7 @@ void twf::resign()
 {
      cout<< "if your brain is a superhero ,You are a invisibleman\n";
                 answers();
-                cout<<" = "<<ans;
+                cout<<ans;
 }
 
 int main()
